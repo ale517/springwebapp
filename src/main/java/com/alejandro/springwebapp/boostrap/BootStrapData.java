@@ -36,14 +36,16 @@ private final PublisherRepository publisherRepository;
         Book ddd= new Book("Domain Driven Design","12345");
         eric.getBooks().add(ddd);
         ddd.getAuthors().add(eric);
+        ddd.setPublisher(publisher);
         authorRepository.save(eric);
         bookRepository.save(ddd);
+
 
         Author rod = new Author("Rob","Johnson");
         Book noEJB = new Book("J2EE develoment without EJB","2313213123123");
         rod.getBooks().add(noEJB);
         noEJB.getAuthors().add(rod);
-
+        noEJB.setPublisher(publisher);
         authorRepository.save(rod);
         bookRepository.save(noEJB);
 

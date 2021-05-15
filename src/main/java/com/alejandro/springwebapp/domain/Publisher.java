@@ -1,12 +1,12 @@
 package com.alejandro.springwebapp.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 public class Publisher {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -16,6 +16,10 @@ public class Publisher {
     private String city;
     private String state;
     private String  zip;
+
+    @OneToMany
+    private Set<Book> books = new HashSet<>();
+
 
     public Publisher() {
     }
@@ -52,8 +56,18 @@ public class Publisher {
                 ", city='" + city + '\'' +
                 ", state='" + state + '\'' +
                 ", zip='" + zip + '\'' +
+                ", books=" + books +
                 '}';
     }
+
+    public Set<Book> getBooks() {
+        return books;
+    }
+
+    public void setBooks(Set<Book> books) {
+        this.books = books;
+    }
+
 
     public String getName() {
         return name;
